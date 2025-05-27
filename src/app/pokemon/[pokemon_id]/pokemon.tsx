@@ -1,5 +1,5 @@
 import  Pokemon from "@/model/pokemon";
-import { Row, Col, Container, Image, ProgressBar, Card } from 'react-bootstrap';
+import { Row, Col, Container, Image, ProgressBar} from 'react-bootstrap';
 import PokemonTypeBadgeComp from "@/components/pokemonTypeBadgeComp";
 
 
