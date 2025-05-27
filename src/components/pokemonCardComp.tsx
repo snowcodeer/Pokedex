@@ -3,6 +3,8 @@
 
 import PokemonCard from "@/model/pokemonCard";
 import { Card } from "react-bootstrap";
+import PokemonTypeBadgeComp from "./pokemonTypeBadgeComp";
+import './pokemonCardComp.css';
 
 
 interface PokemonCardCompProps {
@@ -19,9 +21,12 @@ export default function PokemonCardComp(props: PokemonCardCompProps) {
    return (
        <a href={pokemonUrl}>
            <Card>
-               <Card.Img variant="top" src={props.pokemon.mainImage} />
+               <Card.Img variant="top" src={props.pokemon.mainImage} className="pokemon-card-img"/>
                <Card.Body>
                    <Card.Title>{props.pokemon.pokemonName}</Card.Title>
+                   <Card.Text>
+                       <PokemonTypeBadgeComp pokemonTypes={props.pokemon.pokemonType} />
+                   </Card.Text>
                </Card.Body>
            </Card>
        </a>

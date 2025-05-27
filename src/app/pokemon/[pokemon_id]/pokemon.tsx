@@ -1,54 +1,12 @@
 import Pokemon from "@/model/pokemon";
 import { Row, Col, Container, Image, ProgressBar, Badge } from 'react-bootstrap';
-import PokemonTypeBadgeComp from "@/components/pokemonTypeBadgeComp";
 import FunCard from "@/components/FunCard";
 import { BsBarChart, BsLightning, BsDiagram3 } from "react-icons/bs";
 import "./pokemonComponents.css";
+import { typeColors, typeIcons } from '@/model/typeMaps';
 
 type Props = {
   pokemon: Pokemon;
-};
-
-const typeIcons: Record<string, string> = {
-  Fire: '🔥',
-  Water: '💧',
-  Electric: '⚡',
-  Grass: '🍃',
-  Ice: '❄️',
-  Rock: '🪨',
-  Ground: '🌍',
-  Psychic: '🧠',
-  Fairy: '✨',
-  Bug: '🐛',
-  Poison: '☠️',
-  Flying: '🕊️',
-  Dragon: '🐉',
-  Dark: '🌑',
-  Steel: '⚙️',
-  Ghost: '👻',
-  Normal: '🔘',
-  Fighting: '🥊',
-};
-
-const typeColors: Record<string, string> = {
-  Water: '#4facfe',
-  Fire: '#f5576c',
-  Grass: '#43e97b',
-  Electric: '#fceabb',
-  Ice: '#a1c4fd',
-  Rock: '#d7ccc8',
-  Ground: '#e4a663',
-  Psychic: '#ff9a8b',
-  Fairy: '#fbc2eb',
-  Bug: '#c0e218',
-  Poison: '#bc6ff1',
-  Flying: '#89f7fe',
-  Dragon: '#8e2de2',
-  Dark: '#4b4b4b',
-  Steel: '#cfd8dc',
-  Ghost: '#5c6bc0',
-  Normal: '#e0e0e0',
-  Fighting: '#ef6c00',
 };
 
 function getAnimatedGradientCSS(types: string[]): string {

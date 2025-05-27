@@ -1,18 +1,13 @@
 "use client";
 
-
 import Container from "react-bootstrap/Container";
-import PokemonCard from "@/model/pokemonCard";
+import Pokemon from "@/model/pokemonCard";
 import { Row, Col } from "react-bootstrap";
 import PokemonCardComp from "@/components/pokemonCardComp";
 
-
-
-
 interface PokemonsCompProps {
-   pokemons: PokemonCard[];
+   pokemons: Pokemon[];
 }
-
 
 export default function PokemonsComp(props: PokemonsCompProps) {
    return (
@@ -25,5 +20,6 @@ export default function PokemonsComp(props: PokemonsCompProps) {
                ))}
            </Row>
        </Container>
+       
    );
 }

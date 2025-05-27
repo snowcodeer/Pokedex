@@ -14,7 +14,7 @@ export default function Home() {
 
  useEffect(() => {
    const fetchData = async () => {
-     const resp = await fetch('/api/pokemon');
+     const resp = await fetch(`http://localhost:3000/api/pokemon`);
      if (resp.ok) {
        const pokemons: PokemonCard[] = (await resp.json()).items;
        console.log(pokemons);
