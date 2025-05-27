@@ -1,4 +1,4 @@
-import { Row, Container, Image, Spinner } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import Pokemon from '@/model/pokemon';
 import PokemonComponent from './pokemon';
 import PokeNavBar from '@/components/pokeNavBarComp'
