@@ -1,5 +1,6 @@
 import  Pokemon from "@/model/pokemon";
-import { Row, Col, Container, Image } from 'react-bootstrap';
+import { Row, Col, Container, Image, ProgressBar, Card } from 'react-bootstrap';
+import PokemonTypeBadgeComp from "@/components/pokemonTypeBadgeComp";
 
 
 type Props ={
@@ -21,8 +22,30 @@ export default function PokemonComponent(props : Props) {
                    <Image src={pokemon.mainImage} thumbnail />
                </Col>
                <Col>
-                   Pokémon Properties
+                   <div>
+                    Health
+                    <ProgressBar animated variant="success" now={pokemon.healthPoints} label={`${pokemon.healthPoints}`}/>
+                    Attack
+                    <ProgressBar animated variant="danger" now={pokemon.attack} label={pokemon.attack} />
+                    Defense
+                    <ProgressBar animated variant="warning" now={pokemon.defense} label={pokemon.defense} />
+                    Speed
+                    <ProgressBar animated variant="info" now={pokemon.speed} label={pokemon.speed} />
+                   
+                    </div>
+
+                    <div className="card mt-4" style={{ width: '12rem' }}>
+                    <div className="card-body">
+                        <p className="card-title">Pokemon Type</p>
+                        <p className="card-text">
+                            <PokemonTypeBadgeComp pokemonTypes={pokemon.pokemonType} />
+                        </p>
+                    </div>
+                    </div>
+
+
                </Col>
+               
            </Row>
        </Container>
    );
