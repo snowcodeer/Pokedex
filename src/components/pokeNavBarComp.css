@@ -1,0 +1,29 @@
+.pokebar {
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-family: 'Verdana', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(6px);
+}
+
+.pokebar-brand {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.pokebar-link {
+  color: #ffffff;
+  font-weight: 500;
+  margin-left: 1rem;
+  font-size: 1.1rem;
+}
+
+.pokebar-link:hover,
+.pokebar-brand:hover {
+  text-decoration: none;
+  opacity: 0.85;
+}

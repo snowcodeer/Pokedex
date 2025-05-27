@@ -121,10 +121,23 @@ export default function PokemonComponent({ pokemon }: Props) {
             </FunCard>
 
             <FunCard title="Pokemon Type" icon={<BsLightning />} gradient="to right, #ff6a00, #ee0979">
-                <div className="d-flex flex-wrap gap-2">
-                <PokemonTypeBadgeComp pokemonTypes={pokemon.pokemonType} />
-                </div>
+                <div className="pokemon-types-stack">
+                    {pokemon.pokemonType.map((type, index) => (
+                        <div
+                        key={index}
+                        className="type-pill"
+                        style={{
+                            backgroundColor: typeColors[type] || '#ccc',
+                            color: '#fff',
+                        }}
+                        >
+                        <span className="me-2">{typeIcons[type] || '❓'}</span>
+                        {type}
+                        </div>
+                    ))}
+                    </div>
             </FunCard>
+
 
             <FunCard title="Evolution Family" icon={<BsDiagram3 />} gradient="to right, #7f00ff, #e100ff">
                 <ul className="list-group list-group-flush">
