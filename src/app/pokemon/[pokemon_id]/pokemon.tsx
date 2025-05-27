@@ -35,7 +35,7 @@ export default function PokemonComponent({ pokemon }: Props) {
   return (
     <div style={animatedBgStyle}>
         <div className="background-icons">
-  {pokemon.pokemonType.flatMap((type, i) =>
+  {pokemon.pokemonType.flatMap((type) =>
     Array.from({ length: 25 }).map((_, j) => (
       <span
         key={`${type}-${j}`}
