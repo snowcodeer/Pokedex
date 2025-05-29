@@ -1,6 +1,6 @@
 ## Features
-- Animations! On card hover and animated background on the details page
-- Themes corresponding to emoji and colour to pokemon type
+- Animations! On card hover and animated background and title on the details page
+- Themes corresponding to emoji and colour to pokemon type, background is a shifting gradient of colours with emoji overlay
 - Filter by type
 - Details page with corresponding icons
 - Progress bar for stats (health points, attack, defense, speed), max at 255
