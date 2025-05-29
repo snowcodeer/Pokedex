@@ -1,30 +1,37 @@
 "use client";
 
+import { typeColorMap } from "@/model/typeColorMap";
 
-import { Badge } from "react-bootstrap";
-
-
-interface PokemonCardCompProps {
-   pokemonTypes: string[];
+interface PokemonTypeBadgeCompProps {
+  pokemonTypes: string[];
 }
 
+export default function PokemonTypeBadgeComp({ pokemonTypes }: PokemonTypeBadgeCompProps) {
+  return (
+    <div className="d-flex flex-wrap gap-2">
+      {pokemonTypes?.map((type, index) => {
+        const typeInfo = typeColorMap[type];
 
-export default function PokemonTypeBadgeComp(props: PokemonCardCompProps) {
-   return (
-       <>
-           {props.pokemonTypes?.map((pokemonType, index) => {
-               if (pokemonType === "Water") {
-                   return <Badge key={index} bg="primary">{pokemonType}</Badge>
-               } else if (pokemonType === "Fire") {
-                   return <Badge key={index} bg="danger">{pokemonType}</Badge>
-               } else if (pokemonType === "Grass") {
-                   return <Badge key={index} bg="success">{pokemonType}</Badge>
-               } else if (pokemonType === "Electric") {
-                   return <Badge key={index} bg="warning">{pokemonType}</Badge>
-               } else {
-                   return <Badge key={index} bg="secondary">{pokemonType}</Badge>
-               }
-           })}
-       </>
-   );
+        if (!typeInfo) return null;
+
+        return (
+          <span
+            key={index}
+            className="badge"
+            style={{
+              backgroundColor: typeInfo.color,
+              color: "#fff",
+              padding: "0.5em 0.75em",
+              fontSize: "0.9rem",
+              borderRadius: "1rem",
+              display: "inline-block",
+              lineHeight: "1.2rem",
+            }}
+          >
+            {typeInfo.emoji} {type}
+          </span>
+        );
+      })}
+    </div>
+  );
 }

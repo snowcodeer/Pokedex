@@ -2,3 +2,19 @@
   padding: 0.5rem;
   border-radius: 12px;
 }
+
+a {
+  text-decoration: none;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+.pokemon-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--glow-color, #ccc);
+  z-index: 1;
+}

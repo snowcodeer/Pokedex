@@ -12,23 +12,25 @@ export default function Home() {
  const [pokemons, setPokemons] = useState<PokemonCard[]>();
 
 
- useEffect(() => {
-   const fetchData = async () => {
-     const resp = await fetch(`http://localhost:3000/api/pokemon`);
-     if (resp.ok) {
-       const pokemons: PokemonCard[] = (await resp.json()).items;
-       console.log(pokemons);
-       setPokemons(pokemons);
-     }
-   };
+useEffect(() => {
+  const fetchData = async () => {
+    const resp = await fetch("/pokemons.json"); // read from public folder
+    if (resp.ok) {
+      const pokemons: PokemonCard[] = await resp.json(); // remove `.items`
+      console.log(pokemons);
+      setPokemons(pokemons);
+    } else {
+      console.error("Failed to fetch:", resp.status);
+    }
+  };
 
+  
 
-   fetchData()
-     // Making sure to log errors on the console
-     .catch(error => {
-       console.error(error);
-     });
- }, []);
+  fetchData().catch(error => {
+    console.error("Error loading data:", error);
+  });
+}, []);
+
 
 
  return (

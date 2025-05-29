@@ -3,7 +3,6 @@ import PokemonComponent from './pokemon';
 import PokeNavBar from '@/components/pokeNavBarComp'
 import "./pokemonComponents.css";
 
-// Updated Params type to match async style
 type Params = {
   params: Promise<{ pokemon_id: string }>
 }
@@ -11,13 +10,22 @@ type Params = {
 export default async function PokemonPage({ params }: Params) {
   const { pokemon_id } = await params;
 
-  const resp = await fetch(`http://localhost:3000/api/pokemon/${pokemon_id}`);
+  // Fetch the local JSON file from /public
+  const res = await fetch("http://localhost:3000/pokemons.json"); // ✅ Use public path
+
   let pokemon: Pokemon | null = null;
 
-  if (resp.ok) {
-    pokemon = await resp.json();
+  if (res.ok) {
+    const allPokemons: Pokemon[] = await res.json();
+    // Match the pokemon by number or string id
+    pokemon = allPokemons.find(p => String(p.pokemonNumber) === pokemon_id) ?? null;
     console.log(pokemon);
+  } else {
+    console.error("Failed to load pokemons.json:", res.status);
   }
+
+  // Render component with `pokemon` (or fallback UI)
+
 
   return (
     <>
