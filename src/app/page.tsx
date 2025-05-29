@@ -37,21 +37,23 @@ export default function Home() {
         onTypeChange={setSelectedType}
       />
 
-      {loading
-        ? (
-          <Container>
-            <Row className="justify-content-md-center p-2">
-              <Spinner animation='border' role='status' />
-            </Row>
-            <Row className="justify-content-md-center p-2">
-              Loading Pokémons...
-            </Row>
-          </Container>
-        )
-        : (
-          <PokemonsComp pokemons={pokemonsToShow} />
-        )
-      }
+      {loading ? (
+        <Container
+          fluid
+          className="d-flex flex-column justify-content-center align-items-center"
+          style={{ height: '80vh' }}
+        >
+          <Spinner animation="border" role="status" />
+          <div
+            className="mt-3"
+            style={{ fontFamily: `'Trebuchet MS', sans-serif`, fontSize: '1.2rem' }}
+          >
+            Loading Pokémons...
+          </div>
+        </Container>
+      ) : (
+        <PokemonsComp pokemons={pokemonsToShow} />
+      )}
     </>
   );
 }

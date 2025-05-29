@@ -11,7 +11,7 @@ export default async function PokemonPage({ params }: Params) {
   const { pokemon_id } = await params;
 
   // Fetch the local JSON file from /public
-  const res = await fetch("http://localhost:3000/pokemons.json"); // ✅ Use public path
+  const res = await fetch("http://localhost:3000/pokemons.json"); // Use public path
 
   let pokemon: Pokemon | null = null;
 

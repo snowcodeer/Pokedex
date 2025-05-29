@@ -3,7 +3,7 @@
 import PokemonCard from "@/model/pokemonCard";
 import { Card } from "react-bootstrap";
 import PokemonTypeBadgeComp from "./pokemonTypeBadgeComp";
-import { typeColorMap } from "@/model/typeColorMap"; // ✅ Make sure this exists
+import { typeColorMap } from "@/model/typeColorMap";
 import './pokemonCardComp.css';
 
 interface PokemonCardCompProps {
@@ -29,9 +29,9 @@ export default function PokemonCardComp({ pokemon }: PokemonCardCompProps) {
         />
         <Card.Body>
           <Card.Title>{pokemon.pokemonName}</Card.Title>
-          <Card.Text>
+            <Card.Text>
             <PokemonTypeBadgeComp pokemonTypes={pokemon.pokemonType} />
-          </Card.Text>
+            </Card.Text>
         </Card.Body>
       </Card>
     </a>

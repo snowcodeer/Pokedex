@@ -1,4 +1,3 @@
-// components/FunCard.tsx
 import React from 'react';
 
 type FunCardProps = {

@@ -6,6 +6,7 @@ import { BsBarChart, BsDiagram3, BsLightning, BsHeartFill, BsShieldFill, BsLight
 import { GiCrossedSwords } from 'react-icons/gi';
 import "./pokemonComponents.css";
 import { typeColorMap } from '@/model/typeColorMap';
+import PokemonTypeBadgeComp from '@/components/pokemonTypeBadgeComp';
 
 type Props = {
   pokemon: Pokemon;
@@ -81,21 +82,7 @@ export default function PokemonComponent({ pokemon }: Props) {
               </FunCard>
 
               <FunCard title="Pokemon Type" icon={<BsLightning />} gradient="to right, #ff6a00, #ee0979">
-                <div className="pokemon-types-stack">
-                  {pokemon.pokemonType.map((type, index) => (
-                    <div
-                      key={index}
-                      className="type-pill"
-                      style={{
-                        backgroundColor: typeColorMap[type]?.color || '#ccc',
-                        color: '#fff',
-                      }}
-                    >
-                      <span className="me-2">{typeColorMap[type]?.emoji || '❓'}</span>
-                      {type}
-                    </div>
-                  ))}
-                </div>
+                <PokemonTypeBadgeComp pokemonTypes={pokemon.pokemonType} />
               </FunCard>
 
               <FunCard title="Evolution Family" icon={<BsDiagram3 />} gradient="to right, #7f00ff, #e100ff">
