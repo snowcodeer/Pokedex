@@ -1,52 +1,57 @@
-'use client'
+'use client';
 import PokemonsComp from "@/components/pokemonsComp";
-import PokeNavBar from "@/components/pokeNavBarComp";
+import PokeNavBarComp from "@/components/pokeNavBarComp";
 import PokemonCard from "@/model/pokemonCard";
 import { useEffect, useState } from "react";
 import { Container, Row, Spinner } from "react-bootstrap";
 
-
 export default function Home() {
+  const [allPokemons, setAllPokemons] = useState<PokemonCard[]>([]);
+  const [selectedType, setSelectedType] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
 
+  useEffect(() => {
+    fetch("/pokemons.json")
+      .then(resp => {
+        if (!resp.ok) throw new Error(`Fetch failed: ${resp.status}`);
+        return resp.json();
+      })
+      .then((data: PokemonCard[]) => setAllPokemons(data))
+      .catch(err => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
 
- const [pokemons, setPokemons] = useState<PokemonCard[]>();
+  const allTypes = Array.from(
+    new Set(allPokemons.flatMap(p => p.pokemonType))
+  ).sort();
 
+  const pokemonsToShow = selectedType
+    ? allPokemons.filter(p => p.pokemonType.includes(selectedType))
+    : allPokemons;
 
-useEffect(() => {
-  const fetchData = async () => {
-    const resp = await fetch("/pokemons.json"); // read from public folder
-    if (resp.ok) {
-      const pokemons: PokemonCard[] = await resp.json(); // remove `.items`
-      console.log(pokemons);
-      setPokemons(pokemons);
-    } else {
-      console.error("Failed to fetch:", resp.status);
-    }
-  };
+  return (
+    <>
+      <PokeNavBarComp
+        types={allTypes}
+        selectedType={selectedType}
+        onTypeChange={setSelectedType}
+      />
 
-  
-
-  fetchData().catch(error => {
-    console.error("Error loading data:", error);
-  });
-}, []);
-
-
-
- return (
-   <>
-     <PokeNavBar></PokeNavBar>
-     {pokemons ?
-       <PokemonsComp pokemons={pokemons}></PokemonsComp> :
-       <Container>
-         <Row className="justify-content-md-center p-2">
-           <Spinner className='p-2' animation='border' role='status' />
-         </Row>
-         <Row className="justify-content-md-center p-2">
-           Loading Pokémons...
-         </Row>
-       </Container>
-     }
-   </>
- );
+      {loading
+        ? (
+          <Container>
+            <Row className="justify-content-md-center p-2">
+              <Spinner animation='border' role='status' />
+            </Row>
+            <Row className="justify-content-md-center p-2">
+              Loading Pokémons...
+            </Row>
+          </Container>
+        )
+        : (
+          <PokemonsComp pokemons={pokemonsToShow} />
+        )
+      }
+    </>
+  );
 }

@@ -10,13 +10,13 @@
 }
 
 .pokebar-brand {
-  color: #ffffff;
+  color: #ffffff !important;
   font-weight: bold;
   font-size: 1.5rem;
 }
 
 .pokebar-link {
-  color: #ffffff;
+  color: #ffffff !important;
   font-weight: 500;
   margin-left: 1rem;
   font-size: 1.1rem;
